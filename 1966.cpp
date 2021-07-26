@@ -18,12 +18,11 @@ int main(){
             q.push({j,imp});
             pq.push(imp);
         }
-        
         while(!q.empty()){
             int first = q.front().first;
             int second = q.front().second;
-            q.pop();
             
+            q.pop();
             if(pq.top() == second){
                 pq.pop();
                 ++count;
