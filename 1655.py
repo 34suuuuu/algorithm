@@ -1,3 +1,4 @@
+import heapq
 import sys
 input = sys.stdin.readline
 
@@ -13,3 +14,10 @@ input = sys.stdin.readline
 #         print(data[half-1])
 #     else:
 #         print(data[half])
+
+
+N = int(input())
+heap = []]
+for i in range(N):
+    num = int(input())
+    heap.heappush(heap, num)
