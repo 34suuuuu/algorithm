@@ -1,3 +1,7 @@
+def column(matrix, i):
+    return [row[i] for row in matrix]
+
+
 def getGrade(score):
     if score >= 90:
         grade = 'A'
@@ -16,37 +20,41 @@ def getAverage(scores):
     sum = 0
     for i in scores:
         sum += i
-
     avg = sum / len(scores)
     return avg
+
+
+def getCount(scores):
+    new_list = {}
+    for i in scores:
+        try:
+            new_list[i] += 1
+        except:
+            new_list[i] = 1
+    return new_list
 
 
 def solution(scores):
     answer = ''
     length = len(scores[0])
 
-    for j in range(length):
-        max = scores[0][j]
-        min = scores[0][j]
+    for i in range(length):
+        new_list = column(scores, i)
+        new_dict = getCount(new_list)
 
-        for i in range(length):
-            if max < scores[i][j]:
-                max = scores[i][j]
-            if min > scores[i][j]:
-                min = scores[i][j]
+        min = new_list[0]
+        max = new_list[0]
 
-        if max == scores[j][j]:
+        for j in new_list:
+            if min > j:
+                min = j
+            if max < j:
+                max = j
 
-            del scores[j][j]
-            if temp not in scores
-
-        elif min == scores[j][j]:
-            del scores[j][j]
-        print(max == scores[j][j], min == scores[j][j])
-
-    return scores
-
-
-scores = [[100, 90, 98, 88, 65], [50, 45, 99, 85, 77], [
-    47, 88, 95, 80, 67], [61, 57, 100, 80, 65], [24, 90, 94, 75, 65]]
-print(solution(scores))
+        if max == new_list[i] and new_dict[max] == 1:
+            del new_list[i]
+        elif min == new_list[i] and new_dict[min] == 1:
+            del new_list[i]
+        avg = getAverage(new_list)
+        answer += getGrade(avg)
+    return answer
